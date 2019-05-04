@@ -2,6 +2,7 @@
 
 import sys, random, logging
 from util import *
+from board_logger import log_board
 
 class Bot:
     def __init__(self):
@@ -10,13 +11,14 @@ class Bot:
     def doMove(self, state):
         if not self.name:
             self.name = state.getMyName()
-            logging.basicConfig(filename=self.name + '.log', level=logging.INFO)
+            logging.basicConfig(filename=self.name + '.log', level=logging.DEBUG)
 
-        moves = state.getField().getAvailableMoves()
-        if (len(moves) > 0):
-            return moves[random.randrange(len(moves))]
-        else:
-            return None
+        field = state.getField()
+        moves = field.getAvailableMoves()
+        log_board(field)
+
+        if len(moves):
+            return random.choice(moves)
 
 if __name__ == '__main__':
     bot = Bot()
