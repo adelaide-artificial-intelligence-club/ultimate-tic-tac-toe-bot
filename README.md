@@ -7,3 +7,4 @@ It's like tic-tac-toe, but each square of the game contains another game of tic-
 ## How to play
  - Starter bots in various languages can be found [here](https://playground.riddles.io/competitions/ultimate-tic-tac-toe/how-to-play).
  - Submit your bot [here](https://playground.riddles.io/competitions/ultimate-tic-tac-toe).
+ - A local engine can be downloaded from [here](https://github.com/riddlesio/ultimate-tic-tac-toe-engine).
