@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
 
-
-import sys
-import random
+import sys, random, logging
 from util import *
 
-
-def go():
-    bot = BotStarter()
-    parser = BotParser(bot)
-    parser.run()
-
-
-class BotStarter:
+class Bot:
     def __init__(self):
-        random.seed()
-        
+        self.name = ''
+
     def doMove(self, state):
+        if not self.name:
+            self.name = state.getMyName()
+            logging.basicConfig(filename=self.name + '.log', level=logging.INFO)
+
         moves = state.getField().getAvailableMoves()
         if (len(moves) > 0):
             return moves[random.randrange(len(moves))]
@@ -24,4 +19,6 @@ class BotStarter:
             return None
 
 if __name__ == '__main__':
-    go()
+    bot = Bot()
+    parser = BotParser(bot)
+    parser.run()

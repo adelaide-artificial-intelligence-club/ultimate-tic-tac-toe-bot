@@ -24,7 +24,6 @@ class Field:
         for row in range(self.__NUM_ROWS//3):
             self.__mMacroboard.append(list(null_row))
 
-    # 
     def parseFromString(self, s):
         s = s.replace(";", ",")
         r = s.split(",")
@@ -76,7 +75,7 @@ class Field:
                 if (self.__mBoard[x][y] != self.__EMPTY_FIELD):  return False
         return True
 
-    def  getNrColumns(self):
+    def getNrColumns(self):
         return self.__NUM_COLS
 
     def getNrRows(self):
@@ -96,9 +95,7 @@ class Field:
 
     def setOpponentId(self, id):
         self.__opponentId = id
-        
-        
-        
+
 class Move:
     __x = -1
     __y = -1
@@ -121,8 +118,6 @@ class Player:
     def __init__(self, name):
         self.__name = name
 
-
-
 class BotState:
     __MAX_TIMEBANK = -1
     __TIME_PER_MOVE = -1
@@ -140,13 +135,11 @@ class BotState:
         self.__field = Field()
         self.__players = {}
 
-
     def setTimebank(self, value):
         self.__timebank = value
 
     def setMaxTimebank(self, value):
         self.__MAX_TIMEBANK = value
-
 
     def setTimePerMove(self, value):
         self.__TIME_PER_MOVE = value
@@ -156,7 +149,6 @@ class BotState:
 
     def setRoundNumber(self, roundNumber):
         self.__roundNumber = roundNumber
-
 
     def setMoveNumber(self, moveNumber):
         self.__moveNumber = moveNumber
@@ -200,7 +192,6 @@ class BotParser:
         print(msg)
         sys.stdout.flush()
 
-
     def run(self):
         while not sys.stdin.closed:
             try:
@@ -211,7 +202,7 @@ class BotParser:
                 self.__log.write('EOF')
                 self.__log.close()
         return
-    
+
     def handle_message(self, message):
         self.__log.write("bot received: {}\n".format(message))
         parts = message.split(" ")
@@ -277,7 +268,6 @@ class BotParser:
         except:
             self.__log.write("Cannot parse game data value {} for key {}".format(value, key))
             #e.printStackTrace()
-
 
 class Log:
     __FNAME = "/tmp/bot-log.txt"
